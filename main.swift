@@ -1,0 +1,38 @@
+import CoreFoundation
+import Foundation
+
+var sortedIntegers = [String]()// = unsortedIntegers
+
+while let line = readLine() {
+    sortedIntegers.append(line)
+}
+
+
+func swap(integers:inout [String], firstIndex: Int, secondIndex: Int){
+    let heldValue = integers[firstIndex]
+    integers[firstIndex] = integers[secondIndex]
+    integers[secondIndex] = heldValue
+}
+
+func bubbleSort(array:inout [String]){
+    var isSorted = false
+    var swaps = 0
+    while(!isSorted){
+        swaps = 0
+        for x in 0..<array.count-1 {
+            if(array[x] > array[x + 1]){
+                swap(integers: &array, firstIndex: x, secondIndex: x + 1)
+                swaps += 1
+            }
+        }
+        if (swaps == 0){
+            isSorted = true
+        }
+    }
+}
+bubbleSort(array: &sortedIntegers)
+
+for string in sortedIntegers
+{
+    print(string)
+}
